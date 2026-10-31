@@ -53,14 +53,14 @@
 
 // The standard 252 MHz clock (10x the 640x480 pixel clock). On HSTX boards
 // the display has a clock of its own, and the settings menu offers Overclock:
-// 378 MHz at 1.50 V, the HSTX overclock of pico_shared (as pico-outrun runs).
+// 384 MHz at 1.50 V, the HSTX overclock of pico_shared (as pico-outrun runs).
 // The menu stores the choice in pico_shared's FlashParams and restarts the
 // board; main() picks it up. PicoDVI ties the system clock to the pixel clock:
 // there it stays at 252 MHz.
 #define C1943_CLOCKFREQ_KHZ 252000
 #define C1943_VOLTAGE VREG_VOLTAGE_1_20
 #if HSTX
-#define C1943_MAX_CLOCKFREQ_KHZ 378000
+#define C1943_MAX_CLOCKFREQ_KHZ 384000
 #define C1943_MAX_VOLTAGE VREG_VOLTAGE_1_50
 #else
 #define C1943_MAX_CLOCKFREQ_KHZ C1943_CLOCKFREQ_KHZ
@@ -174,7 +174,7 @@ static c1943_pads_t pads;
         [MOPT_RESET_GAME] = 1,                                                          \
         [MOPT_REBOOT_TO_LOADER] = BOOTLOADER_BUILD, /* the bootloader's picker */       \
         [MOPT_SAVE_RESTORE_STATE] = -1,             /* no save states */                \
-        [MOPT_SCREENMODE] = 1,                                                          \
+        [MOPT_SCREENMODE] = HSTX, /* PicoDVI has only one: no scanlines */              \
         [MOPT_SCANLINES] = 0, /* covered by the screen modes */                         \
         [MOPT_SCANLINE_TYPE] = HSTX,                                                    \
         [MOPT_FPS_OVERLAY] = 1,                                                         \
@@ -193,7 +193,7 @@ static c1943_pads_t pads;
         [MOPT_AUTO_INSERT_FDS_DISK_A] = 0, /* Famicom Disk System */                    \
         [MOPT_AUTO_SWAP_FDS_DISK] = 0,     /* Famicom Disk System */                    \
         [MOPT_FDS_DISK_SWAP] = 0,          /* Famicom Disk System */                    \
-        [MOPT_OVERCLOCK] = HSTX ? 2 : 0,   /* 2: in-game as well, 378 MHz (see above) */ \
+        [MOPT_OVERCLOCK] = HSTX ? 2 : 0,   /* 2: in-game as well, 384 MHz (see above) */ \
         [MOPT_FM_AUDIO] = 0,               /* Master System YM2413 */                   \
         [MOPT_ENTER_BOOTSEL_MODE] = 1,                                                  \
         [MOPT_CONTROLLER_TEST] = 1,                                                     \
@@ -206,7 +206,6 @@ static c1943_pads_t pads;
         [MOPT_MENU_OVERSCAN] = 0, /* shown regardless: listed below the menu colors */  \
         [MOPT_GENESIS_PAD] = 0,   /* Genesis */                                         \
         [MOPT_NES_PALETTE] = 0,   /* NES */                                             \
-        [MOPT_HSTX_CLOCK_FIX] = (HSTX && !CFG_TUH_RPI_PIO_USB) ? 2 : 0, /* 2: in-game as well */ \
         [MOPT_BUTTON_LAYOUT] = 0, /* NES */                                             \
         [MOPT_TATE_MODE] = 1,     /* the game is vertical */                            \
     }
@@ -215,12 +214,13 @@ int8_t g_settings_visibility_1943_quit[MOPT_COUNT] = C1943_VISIBILITY(1);
 int8_t g_settings_visibility_1943[MOPT_COUNT] = C1943_VISIBILITY(0);
 
 // The 8:7 modes stretch NES pixels; 1943's are square-ish, so only the 1:1
-// modes are offered.
+// modes are offered. PicoDVI has no scanlines: on the upright picture (Tate mode
+// off) they do not display well.
 const uint8_t g_available_screen_modes_1943[] = {
     0, // SCANLINE_8_7
     0, // NOSCANLINE_8_7
-    1, // SCANLINE_1_1
-    1, // NOSCANLINE_1_1
+    HSTX, // SCANLINE_1_1
+    1,    // NOSCANLINE_1_1
 };
 
 // ---------------------------------------------------------------------------

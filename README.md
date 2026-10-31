@@ -105,7 +105,7 @@ For wiring and assembly instructions, see the setup sections of the [pico-infone
 
 The board runs at 252 MHz. On boards with HSTX video output the second core is free while it feeds the display, and the sound board (the sound CPU and both YM2203s) runs there; the main CPU and the drawing run on the first core. On boards with PicoDVI video output the second core encodes the display, and everything runs on the first core: when a frame takes longer than the display allows, the next picture is not drawn, so the game and its sound keep their speed.
 
-On boards with HSTX video output, the *Overclock* setting runs the board at 378 MHz (core voltage 1.50 V) instead, which gives the drawing more room in busy scenes. The board restarts to apply it, and the game starts again. Some displays show dots or lines at this clock. On boards with PicoDVI video output the clock is tied to the display and the setting is not offered.
+On boards with HSTX video output, the *Overclock* setting runs the board at 384 MHz (core voltage 1.50 V) instead, which gives the drawing more room in busy scenes. The board restarts to apply it, and the game starts again. On boards with PicoDVI video output the clock is tied to the display and the setting is not offered.
 
 Audio is sent over HDMI. Boards with an I2S DAC (configurations 8, 13 and 14) can use it instead through the *External Audio* setting; on the Fruit Jam, plugging in headphones selects it automatically. Configuration 15 also plays the sound on its PWM audio jack.
 
@@ -162,7 +162,7 @@ Both pictures appear upright once the monitor is turned as described in the tabl
 
 ## Settings menu
 
-**SELECT + START** opens the settings menu during the game. Besides *Tate mode*, it offers the screen mode with or without scanlines, the FPS overlay, audio on/off, rapid fire on A, the external audio output, the Fruit Jam volume and VU meter, *Overclock* (HSTX boards, see [Supported hardware](#supported-hardware)), *Reset Game*, the controller test, BOOTSEL mode and USB drive mode. With both games on the card it also offers *Quit game*, which returns to the menu that chooses the game. When started from pico-bootLoader, it also offers *Return to emulator selection menu*.
+**SELECT + START** opens the settings menu during the game. Besides *Tate mode*, it offers the screen mode with or without scanlines (on boards with HSTX output; PicoDVI boards have no scanlines), the FPS overlay, audio on/off, rapid fire on A, the external audio output, the Fruit Jam volume and VU meter, *Overclock* (HSTX boards, see [Supported hardware](#supported-hardware)), *Reset Game*, the controller test, BOOTSEL mode and USB drive mode. With both games on the card it also offers *Quit game*, which returns to the menu that chooses the game. When started from pico-bootLoader, it also offers *Return to emulator selection menu*.
 
 The settings are stored on the SD card in `/settings_ARC.dat`, a file shared by all arcade games of this family. The game has no save states, and high scores are not kept after a reset or power cycle. The game chosen last is kept in `/roms/arcade/1943/LASTSET.TXT`.
 

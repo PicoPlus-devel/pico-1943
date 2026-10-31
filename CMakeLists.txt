@@ -213,7 +213,6 @@ target_compile_definitions(${projectname} PUBLIC
     ENABLE_VU_METER=${ENABLE_VU_METER}
     WIIPAD_DELAYED_START=${WIIPAD_DELAYED_START}
     ENABLEDVI=1
-    NES_OVERCLOCK_FIX=1                 # PIO-USB builds: HSTX from PLL_USB, no dots at 378 MHz. Not NES-specific, as in pico-outrun
     FRENS_FORCE_USB_MSC_IN_SETTINGS=1   # no ROM browser: offer USB drive mode in the in-game settings
     I2S_AUDIO_RING_SIZE=2048            # room for the audio cushion and a whole frame, see pushAudio() in main.cpp
     # The flash store (main.cpp) ends where the chip itself says it does

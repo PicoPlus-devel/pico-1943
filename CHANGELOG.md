@@ -13,14 +13,18 @@ An emulator of the arcade games 1943: The Battle of Midway and 1943 Kai: Midway 
 
 # Changelog
 
-## v0.1.3
+## v0.2
 
+- **No more dots or lines in the picture with Overclock on.** On boards with HSTX video, some TVs and monitors showed small dots or short dotted lines while Overclock was on. The picture is now clean, and the built-in USB port can still be used for controllers and USB drive mode. Thanks to @szuping for the hint that led to this fix.
+- **The Video Clock Fix setting has been removed.** It is no longer needed. On a board where it was turned on, a USB controller on the built-in USB port works again.
+- **Overclock** now runs the board at 384 MHz instead of 378 MHz.
+- **No scanlines on boards with PicoDVI output.** With *Tate mode* off they did not display well, so the scanline screen mode is no longer offered on these boards. A saved scanline setting switches to the mode without scanlines.
 - Fixed: on the Adafruit Fruit Jam and other boards with PIO-USB, USB controllers were often not found at start-up.
 
 ## v0.1.2
 
-- **New setting: Video Clock Fix** (Pico 2 or PicoNES PCB, Adafruit Metro RP2350, Murmulator M2 and Olimex RP2040-PICO-PC). Turn it on if your TV or monitor shows small dots or lines in the picture with Overclock on. A USB controller can then no longer be used; use a NES, SNES or Wii controller instead.
-- On the Adafruit Fruit Jam and Feather RP2350 the Video Clock Fix is always on.
+- ~~**New setting: Video Clock Fix** (Pico 2 or PicoNES PCB, Adafruit Metro RP2350, Murmulator M2 and Olimex RP2040-PICO-PC). Turn it on if your TV or monitor shows small dots or lines in the picture with Overclock on. A USB controller can then no longer be used; use a NES, SNES or Wii controller instead.~~ Removed in v0.2.
+- ~~On the Adafruit Fruit Jam and Feather RP2350 the Video Clock Fix is always on.~~
 
 ## v0.1.1
 
