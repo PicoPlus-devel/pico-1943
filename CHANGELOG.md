@@ -19,6 +19,7 @@ An emulator of the arcade games 1943: The Battle of Midway and 1943 Kai: Midway 
 - **The Video Clock Fix setting has been removed.** It is no longer needed. On a board where it was turned on, a USB controller on the built-in USB port works again.
 - **Overclock** now runs the board at 384 MHz instead of 378 MHz.
 - **No scanlines on boards with PicoDVI output.** With *Tate mode* off they did not display well, so the scanline screen mode is no longer offered on these boards. A saved scanline setting switches to the mode without scanlines.
+- **USB keyboard in the menus.** Enter selects and Esc goes back.
 - Fixed: on the Adafruit Fruit Jam and other boards with PIO-USB, USB controllers were often not found at start-up.
 
 ## v0.1.2
