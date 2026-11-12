@@ -19,7 +19,7 @@ then
 	echo "Please install picotool from https://github.com/raspberrypi/picotool.git"
 	exit 1
 fi
-HWCONFIGS="1 2 5 6 7 8 9 10 12 13 14 15"
+HWCONFIGS="1 2 5 6 7 8 9 10 12 13 14 15 17 18"
 for HWCONFIG in $HWCONFIGS
 do
 	./bld.sh -c $HWCONFIG -2 || exit 1
