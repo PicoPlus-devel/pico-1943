@@ -103,11 +103,7 @@ pico-1943 runs on every RP2350 configuration of this family. RP2040 boards are n
 | 17 | Pico Computer 3 | HSTX | `pico1943_PicoComputer3_arm.uf2` |
 | 18 | PCB for the Waveshare RP2350-PiZero | HSTX | `pico1943_WaveShareRP2350PiZeroLiuPCB_arm_piousb.uf2` |
 
-The [PCB for the Waveshare RP2350-PiZero](https://github.com/PicoPlus-devel/pico-infonesPlus#pcb-with-waveshare-rp2350-pizero) (HW_CONFIG 18), designed by Liu Szuping:
-
-| <img src="docs/images/WaveShareRP2350PiZeroLiuPCB_top.jpg" width="380" alt="The PCB seen from above, with the RP2350-PiZero, the ESP32 module, two NES and two SNES controller ports"> | <img src="docs/images/WaveShareRP2350PiZeroLiuPCB_inuse.jpg" width="380" alt="The PCB in use, with a DualShock 4 controller"> |
-|:--:|:--:|
-| <img src="docs/images/WaveShareRP2350PiZeroLiuPCB_side.jpg" width="380" alt="The PCB seen from the side"> | <img src="docs/images/WaveShareRP2350PiZeroLiuPCB_front.jpg" width="380" alt="The front of the PCB, with its HDMI port below the RP2350-PiZero"> |
+The [PCB for the Waveshare RP2350-PiZero](https://github.com/PicoPlus-devel/pico-infonesPlus#pcb-with-waveshare-rp2350-pizero) (HW_CONFIG 18), designed by Liu Szuping.
 
 For wiring and assembly instructions, see the setup sections of the [pico-infonesPlus README](https://github.com/PicoPlus-devel/pico-infonesPlus#setup). To flash a board, hold BOOTSEL while connecting it over USB, then copy the `.uf2` file onto the USB drive that appears.
 
