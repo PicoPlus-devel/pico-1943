@@ -634,18 +634,31 @@ static void flashErase(uint32_t offset, uint32_t len)
     Frens::flashEraseSafe(offset, len);
 }
 
+// The progress screen during a copy (HDMI/HSTX only, see
+// Frens::flashProgressBegin()): bytes programmed against the size of the slot.
+static uint32_t copyDone = 0;
+static uint32_t copyTotal = 0;
+
 static void flashProgram(uint32_t offset, const uint8_t *data, uint32_t len)
 {
     Frens::flashProgramSafe(offset, data, len);
+    copyDone += len;
+    Frens::flashProgressUpdate(copyDone, copyTotal);
 }
 
+// Called when the copy starts and then after every 64 KB.
 static void flashCopying(int set)
 {
     static bool led = false, told = false;
     led = !led;
     Frens::blinkLed(led);
     if (!told)
+    {
         printf("Copying %s to flash\n", c1943_sets[set].title);
+        copyDone = 0;
+        copyTotal = c1943_store_slot_size();
+        Frens::flashProgressBegin("Copying game to flash memory", c1943_sets[set].title);
+    }
     told = true;
 }
 
@@ -698,9 +711,10 @@ static void prepareFlash()
     const uint64_t t0 = Frens::time_us();
     c1943_store_copy((c1943_set_id_t)set, variant, &romIo, dir, arena, sizeof(arena));
     copiedSet = set;
+    const bool ok = c1943_store_variant((c1943_set_id_t)set) == variant;
+    Frens::flashProgressEnd(ok);
     printf("Copied %s to flash in %lu ms: %s\n", c1943_sets[set].title,
-           (unsigned long)((Frens::time_us() - t0) / 1000),
-           c1943_store_variant((c1943_set_id_t)set) == variant ? "ok" : "FAILED");
+           (unsigned long)((Frens::time_us() - t0) / 1000), ok ? "ok" : "FAILED");
 }
 
 // Restarts the board to copy the set into flash; see above.

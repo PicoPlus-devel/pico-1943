@@ -16,6 +16,7 @@ An emulator of the arcade games 1943: The Battle of Midway and 1943 Kai: Midway 
 ## Next release
 
 - Built with Pico SDK 2.3.1. This leaves a little more memory free, about 4.4 KB.
+- On boards with HSTX video and no PSRAM, a progress bar is now shown while a game is copied into flash, instead of a blank screen.
 
 ## v0.3
 
