@@ -13,7 +13,9 @@ An emulator of the arcade games 1943: The Battle of Midway and 1943 Kai: Midway 
 
 # Changelog
 
-## Next release
+## v0.3_bl
+
+This version is built for [pico-bootLoader](https://github.com/PicoPlus-devel/pico-bootLoader) only, and is included in its SD-card archive. It has no release of its own: without pico-bootLoader, keep using v0.3.
 
 - **Attract mode.** pico-bootLoader's new attract mode can now start the game with a random one of the sets on the card (*1943* or *1943 Kai*). Press any button to play yourself.
 - Built with Pico SDK 2.3.1. This leaves a little more memory free, about 4.4 KB.
